@@ -1,7 +1,9 @@
 % Bifurcation of the Rulkov map over sigma, color-coded by joint ExEnt (H_DA)
 % + HD, HA, H_DA rug plot
 % + Sample Entropy vs sigma
-% clear; clc;
+% Sara Kamali, sara.kamali@uam.es, sara.kamali@gmail.com, UAM, GNB lab, June 2025
+
+clear; clc;
 
 %% Control parameter (sigma) and fixed parameters
 sigma_range = -1.5:0.002:1.5;      % control parameter (adjust step as needed)
@@ -24,8 +26,6 @@ alpha  = 0.2;       % SampEn tolerance factor (r = alpha * std)
 HD_values       = zeros(num_s,1);
 HA_values       = zeros(num_s,1);
 H_joint_values  = zeros(num_s,1);
-% Optional: store M if you want it in rug (kept for completeness)
-M_values        = zeros(num_s,1);
 
 %% Preallocate bifurcation cloud (exact size)
 bifurcation_sigma  = zeros(num_s * N_ss, 1);
@@ -60,7 +60,6 @@ for i = 1:num_s
     HD_values(i)      = HD;
     HA_values(i)      = HA;
     H_joint_values(i) = H_joint;
-    M_values(i)       = M;
     samp_en(i)        = SE;
 
     % store bifurcation cloud (replicate H_joint for this stripe)
