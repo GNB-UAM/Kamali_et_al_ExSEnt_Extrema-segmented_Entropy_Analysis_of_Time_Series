@@ -1,6 +1,6 @@
 % Plot the bifurcation diagram of Rossler system, color coded with joint ExEnt entropy 
 % and evaluate HD, HA, and H_DA for a range of c values
-% Sara Kamali June 2025
+% Sara Kamali, sara.kamali@uam.es, sara.kamali@gmail.com, UAM, GNB lab, June 2025
 clc;
 
 %% 1. Rossler Signals
