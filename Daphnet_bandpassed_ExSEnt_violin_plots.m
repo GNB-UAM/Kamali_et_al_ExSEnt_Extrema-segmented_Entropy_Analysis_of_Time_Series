@@ -12,8 +12,8 @@ set(groot,'DefaultAxesFontSize',20,'defaultaxesfontweight','bold', ...
     'DefaultAxesLineWidth',1.5,'DefaultLineLineWidth',2);
 
 %% Paths & parameters -----------------------------------------------------
-data_path   = '/Users/sarakamali/Desktop/Exent Project/Data/ Daphnet Freezing of Gait Dataset/dataset';
-results_path = '/Users/sarakamali/Desktop/Exent Project/Results/Daphne dataset';
+data_path   = 'add data path';
+results_path = 'add path to save results';
 addpath(data_path,results_path)
 if ~exist(results_path,'dir'); mkdir(results_path); end
 
@@ -42,8 +42,8 @@ HD_freeze = nan(numSubj,numBands);
 HA_freeze = nan(numSubj,numBands);
 HDA_freeze= nan(numSubj,numBands);
 num_seg_freeze = nan(numSubj,numBands);
+
 %% Main loop --------------------------------------------------------------
-cd(data_path)
 
 for sub = 1:numSubj
     subj=subjects(sub);
@@ -148,7 +148,7 @@ for b = 1:numBands                              % columns
 % draw violins + points (default is ShowData=true, so just omit or set true)
 v = violinplot(vals, groups, 'ViolinAlpha', 0.3, 'ShowData', true);
 
-% colour the two violins  (cell for ViolinColor, vector for Box/Dots)
+% Color the two violins  
 cmap = {darkPurp, lightPurp};
 
 % Move / Walk
@@ -161,12 +161,10 @@ v(2).ViolinColor = cmap(2);
 v(2).BoxColor    = cmap{2};
 v(2).ScatterPlot.CData = repmat(cmap{2}, numel(v(2).ScatterPlot.CData), 1);
 
-
         % Row labels
         if b == 1
             ylabel(metrics{mIdx});
         end
-
         % Column titles
         if mIdx == 1
             title(BANDS{b});
@@ -178,7 +176,6 @@ end
 sgtitle('Aggregated SampEnt Metrics Across Subjects');
 saveas(aggFig, fullfile(results_path, 'AllSubjects_ViolinPlots.png'));
 % close(aggFig);
-
 
 %% ------------------- 4. Stats: rank‑sum & Spearman ----------------------
 numMetrics = numel(metrics);
@@ -218,7 +215,6 @@ statsTbl = table(resBands, resMetric, pRankSum, hRankSum,  ...
     'VariableNames', {'Band', 'Metric', 'pRankSum', 'hRankSum'});
 
 disp(statsTbl);
-
 
 %% -------- Collect every window across subjects (for bands 1–2) ----------
 metrics       = {'HD','HA','HDA'};          % three SampEn metrics
