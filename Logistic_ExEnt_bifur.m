@@ -1,19 +1,18 @@
-% Compute ExEnt over logistic map. Color code bifurcation diagram based on H_joint and add
+% Compute ExEnt over logistic map. Color-code the bifurcation diagram based on H_joint and add
 % the HD and HA to the plot
-% Sara Kamali, sara.kamali@uam.es, sara.kamali@gmail.com, UAM, GNB lab,
-% June 2025
 
 clear; clc;
 
 % Define parameter range for chaos control parameter r
-r_range = 2.9:0.001:4;   %  Finer step for smoother bifurcation.
+r_range = 2.9:0.002:4;   %  Finer step for smoother bifurcation plot
+
 num_r = length(r_range);
 
-% % Preallocate arrays for the rug plot (HD and HA vs. r)
+% % Preallocate arrays to plot (HD and HA vs. r)
 HD_values = zeros(num_r, 1);
 HA_values = zeros(num_r, 1);
 H_joint_values = zeros(num_r, 1);
-% % Preallocate arrays for the rug plot (Sample entropy, multiscale entropy and permutation entropy)
+% % Preallocate arrays to plot (Sample entropy)
 samp_en = zeros(num_r, 1);
 
 
@@ -103,17 +102,12 @@ hold(ax2, 'off');
 set(gca,'fontsize',30,'linewidth',1.7)
 % Link the x-axes so they share the same range
 linkaxes([ax1, ax2], 'x');
-savefig('Logisticmap_bifur_colorcoded.fig')
- % print(gcf,'Logisticmap_bifur_colorcoded.png','-dpng','-r300')
-close
+
+print(gcf,'Logisticmap_bifur_colorcoded.png','-dpng','-r300') %Save the plot
+
 %% Plot
 figure
 hold 'on';
-% subplot(211)
-% plot(r_range, HD_values, 'Color', [.1, .35, .65]);hold on
-% plot(r_range, HA_values,  'Color', [.85,.2,.25]);hold on
-% plot(r_range, H_joint_values, 'Color', [.65, .2, .75]);hold on
-% legend({'H_D', 'H_A','H_{DA}'}, 'Location', 'best');
 subplot(312)
 plot(r_range,samp_en, 'Color', [0.7, 0.3, 0.1],'linewidth',1.7);hold on
 xlabel('Control Parameter r');
@@ -121,9 +115,8 @@ ylabel('SampEnt');
 xlim([2.9 4-.005]);
 set(gca,'fontsize',30,'fontweight','bold','linewidth',1.7)
 ylim([0 .9])
-savefig('Logisticmap_sampen.fig')
-% print(gcf,'Logisticmap_sampen.png','-dpng','-r300')
+print(gcf,'Logisticmap_sampen.png','-dpng','-r300')
 
-close 
+
 %% save workspace
 save('Logistic_workspace.mat')
