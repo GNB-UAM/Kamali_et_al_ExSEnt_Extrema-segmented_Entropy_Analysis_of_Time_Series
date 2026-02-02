@@ -1,21 +1,20 @@
 % Bifurcation of the Rulkov map over sigma, color-coded by joint ExEnt (H_DA)
 % + HD, HA, H_DA rug plot
 % + Sample Entropy vs sigma
-% Sara Kamali, sara.kamali@uam.es, sara.kamali@gmail.com, UAM, GNB lab, June 2025
-
-clear; clc;
+% clear; clc;
 
 %% Control parameter (sigma) and fixed parameters
-sigma_range = -1.5:0.002:1.5;      % control parameter (adjust step as needed)
+sigma_range = -1.5:0.0025:1.5;      % control parameter (adjust step as needed)
 num_s = numel(sigma_range);
 alphaR = 4.3;                       % fast subsystem gain
-mu     = 0.001;                     % slow timescale
+mu     = 0.001;                  %  timescale ---> slow dynamics
 
 %% Simulation parameters
-N           = 15000;                % total iterations
-N_transient = 500;                  % discard first samples
-N_ss        = 500;                  % number of steady-state points kept per sigma
-x0 = -1.5;  y0 = -2.0;              % initial conditions
+N           = 20000;              % total iterations
+N_transient = 5000;               % discard first samples
+N_ss        = 1000;                  % number of steady-state points kept per sigma
+x0 = -1.5;
+y0 =-2;            % initial conditions
 
 %% ExEnt / SampEn parameters (match your logistic script)
 lambda = 0.01;      % segmentation tolerance
@@ -26,6 +25,8 @@ alpha  = 0.2;       % SampEn tolerance factor (r = alpha * std)
 HD_values       = zeros(num_s,1);
 HA_values       = zeros(num_s,1);
 H_joint_values  = zeros(num_s,1);
+% Optional: store M if you want it in rug (kept for completeness)
+M_values        = zeros(num_s,1);
 
 %% Preallocate bifurcation cloud (exact size)
 bifurcation_sigma  = zeros(num_s * N_ss, 1);
@@ -46,12 +47,13 @@ for i = 1:num_s
     % steady-state segment
     x_ss = x(N_transient:end);
 
-    % take last N_ss points for bifurcation cloud (like logistic script)
-    seg = x_ss(end-N_ss+1:end);
-
     % --- ExEnt metrics (HD, HA, H_DA) ---
     [HD, HA, H_joint, M, ~, ~, ~, ~, ~] = compute_Sampentropies(x_ss, lambda, m, alpha);
 
+    % take last N_ss points for bifurcation cloud (like logistic script)
+    seg = x_ss(end-N_ss+1:end);
+
+    
     % --- Sample Entropy ---
     r  = alpha * std(x_ss);
     SE = sample_entropy(x_ss, m, r);
@@ -60,6 +62,7 @@ for i = 1:num_s
     HD_values(i)      = HD;
     HA_values(i)      = HA;
     H_joint_values(i) = H_joint;
+    M_values(i)       = M;
     samp_en(i)        = SE;
 
     % store bifurcation cloud (replicate H_joint for this stripe)
@@ -115,4 +118,4 @@ xlim([min(sigma_range) max(sigma_range)]);
 % print(gcf,'Rulkovmap_SampEn.png','-dpng','-r300')
 
 %% Save workspace
-save('Rulkov_ExEnt_bifurcation_workspcae.mat')
+save('Rulkov_ExEnt_bifurcation_workspcae_2.mat')
