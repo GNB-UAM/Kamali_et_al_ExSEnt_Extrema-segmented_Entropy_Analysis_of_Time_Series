@@ -50,7 +50,7 @@ for i = 1:num_r
     m=2;
     alpha=0.2;
     % Compute DEnt measures (HD, HA, and joint H)
-    [HD, HA, H_joint,~,~,~,~,~, ~] = compute_Sampentropies(x_ss,lambda,m,alpha);
+    [HD, HA, H_joint,~,~,~,~,~, ~] = compute_ExSEnt_metrics(x_ss,lambda,m,alpha);
 
 
     % Replicate H_joint_norm for each point in the current steady-state
@@ -120,3 +120,4 @@ print(gcf,'Logisticmap_sampen.png','-dpng','-r300')
 
 %% save workspace
 save('Logistic_workspace.mat')
+
