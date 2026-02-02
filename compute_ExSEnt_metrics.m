@@ -1,4 +1,4 @@
-function [HD, HA, H_joint,M,range_D,range_A,r_D,r_A, segment_ids] = compute_Sampentropies(signal,lambda,m,alpha)
+function [HD, HA, H_joint,M,range_D,range_A,r_D,r_A, segment_ids] = compute_ExSEnt_metrics(signal,lambda,m,alpha)
 
 % COMPUTE_SAMPENTROPIES
 %   Computes Sample Entropy (SampEn) on:
@@ -78,4 +78,5 @@ function [HD, HA, H_joint,M,range_D,range_A,r_D,r_A, segment_ids] = compute_Samp
     
 
 end
+
 
