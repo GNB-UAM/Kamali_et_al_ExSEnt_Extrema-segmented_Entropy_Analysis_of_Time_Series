@@ -48,7 +48,7 @@ for i = 1:num_s
     x_ss = x(N_transient:end);
 
     % --- ExEnt metrics (HD, HA, H_DA) ---
-    [HD, HA, H_joint, M, ~, ~, ~, ~, ~] = compute_Sampentropies(x_ss, lambda, m, alpha);
+    [HD, HA, H_joint, M, ~, ~, ~, ~, ~] = compute_ExSEnt_metrics(x_ss, lambda, m, alpha);
 
     % take last N_ss points for bifurcation cloud (like logistic script)
     seg = x_ss(end-N_ss+1:end);
@@ -119,3 +119,4 @@ xlim([min(sigma_range) max(sigma_range)]);
 
 %% Save workspace
 save('Rulkov_ExEnt_bifurcation_workspcae_2.mat')
+
