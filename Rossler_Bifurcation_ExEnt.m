@@ -59,7 +59,7 @@ parfor cond = 1:num_c
     [pks, ~] = findpeaks(signal_ss);  % Adjust prominence as needed
     
     % Compute sample entropy measures on the steady state signal
-    [HD, HA, H_joint,M,~,~,~,~] = compute_Sampentropies(signal_ss, lambda,m,alpha);
+    [HD, HA, H_joint,M,~,~,~,~] = compute_ExSEnt_metrics(signal_ss, lambda,m,alpha);
 
 
     % Store HD, HA, and H_joint for the rug plot
