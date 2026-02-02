@@ -1,3 +1,10 @@
+% This is the code to compute the ExSEnt metrics (HD, HA, HDA), which disentangle the time and amplitude entropies 
+% to yield a more nuanced picture of the irregularities of the time series. The detailed explanations of the method
+% is included in:  https://doi.org/10.48550/arXiv.2509.07751
+% Sara Kamali, sara.kamali@uam.es, sara.kamali@gmail.com, UAM, GNB lab
+
+
+
 function [HD, HA, H_joint,M,range_D,range_A,r_D,r_A, segment_ids] = compute_ExSEnt_metrics(signal,lambda,m,alpha)
 
 % COMPUTE_SAMPENTROPIES
@@ -78,5 +85,6 @@ function [HD, HA, H_joint,M,range_D,range_A,r_D,r_A, segment_ids] = compute_ExSE
     
 
 end
+
 
 
