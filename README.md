@@ -19,11 +19,11 @@ Bechtold, Bastian (2016). Violin Plots for Matlab (GitHub).
 Repository: https://github.com/bastibe/Violinplot-Matlab  
 DOI: https://doi.org/10.5281/zenodo.4559847
 
-## Code overview (Matlab)
+## Code overview (Matlab + Python)
 
-1. compute_ExSEnt_metrics.m  
+1. compute_ExSEnt_metrics.m/compute_ExSEnt_metrics.py  
 Main entry point for computing the three ExSEnt metrics: H_D, H_A, and H_DA (entropies of time, amplitude, and time–amplitude irregularities of the extrema-segmented time series). Corresponds to the Methodology section.  
-Dependencies: extract_DA.m, sample_entropy.m.
+Dependencies: extract_DA.m, sample_entropy.m and extract_DA.py, sample_entropy.py.
 
 2. ExSEnt_for_Synthetic_signals.m  
 Generates synthetic signals (Gaussian noise, pink noise, Brownian motion) and computes ExSEnt measures. Used for Fig. 2.
