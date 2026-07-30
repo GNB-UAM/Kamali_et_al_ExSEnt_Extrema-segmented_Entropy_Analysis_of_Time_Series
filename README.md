@@ -4,7 +4,6 @@ Code accompanying:
 
 ExSEnt: Extrema-Segmented Entropy Analysis of Time Series  
 S. Kamali, F. Baroni, P. Varona  
-Nonlinear Dynamics 114, 980 (2026)
 DOI: [https://doi.org/10.48550/arXiv.2509.07751
 ](https://doi.org/10.1007/s11071-026-12858-1)
 
@@ -55,7 +54,9 @@ If you use this code, please cite:
 
 ExSEnt: Extrema-Segmented Entropy Analysis of Time Series  
 S. Kamali, F. Baroni, P. Varona  
-https://doi.org/10.48550/arXiv.2509.07751
+Nonlinear Dynamics 114, 980 (2026)
+DOI: [https://doi.org/10.48550/arXiv.2509.07751
+](https://doi.org/10.1007/s11071-026-12858-1)
 
 ## Rights
 
